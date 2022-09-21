@@ -74,7 +74,6 @@ public class CommandUtil {
             PermissionUtil permissionUtil = new PermissionUtil(p);
 
             if(!permissionUtil.hasPermission(permissions)) {
-
                 p.sendMessage(CommandUtil.PERM_MESSAGE);
                 return false;
             }
