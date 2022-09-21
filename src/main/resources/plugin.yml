@@ -1,0 +1,4 @@
+name: PluginUtils
+version: '${version}'
+main: pl.norbit.pluginutils.PluginUtils
+authors: [ Norbit4 ]
