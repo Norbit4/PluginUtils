@@ -52,7 +52,7 @@ dependencies {
 
 depend: [PluginUtils]
 ```
-- download and add plugin to server
+- [download](https://github.com/Norbit4/PluginUtils/releases/) and add plugin to server
 
 #
 
@@ -60,7 +60,7 @@ depend: [PluginUtils]
 
 *with gradle*:
 
-- add shadow plugin
+- add [shadow](https://github.com/johnrengelman/shadow) plugin 
 ```gradle
 
 plugins {
@@ -96,14 +96,16 @@ String[] permissions = new String[] {"*", "example.*"};
 CommandUtil
         .builder()
         .commandName("ping") //<- /ping
-        .commandExecutor(new Cmd())
+        .commandExecutor(new PingCmd())
         .delay(30)
         .timeUnits(CommandUtil.TimeUnits.SECONDS)
         .permissions(permissions)
         .build()
         .register();
-        
-public class Cmd implements CommandExecutor {
+```       
+  
+```java
+public class PingCmd implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         //this execute when player has permission && cooldown is down
@@ -130,4 +132,80 @@ CommandUtil.setCooldownMessage("Cooldown: {COOLDOWN}");
 
 commands:
   ping:
+```
+
+#
+
+<h3>Task builder</h3>
+
+*Later task:*
+
+```java
+TaskBuilder
+        .builder()
+        .taskType(TaskType.LATER)
+        .asynchronous(false)
+        .delay(10)
+        .delayUnit(TaskUnit.SECONDS) 
+        .runnable(() ->{
+            System.out.println("This will start afte 10 seconds!");
+        })
+        .build() //return task
+        .start(); //start task
+```
+
+*Timer task:*
+
+```java
+TaskBuilder
+        .builder()
+        .taskType(TaskType.TIMER)
+        .asynchronous(false) //default: false
+        .delay(10)
+        .period(1)
+        .delayUnit(TaskUnit.SECONDS) 
+        .runnable(() ->{
+            System.out.println("This is execute every 1 second!");
+        })
+        .build() 
+        .start();
+```
+
+<h3>Formatter</h3>
+
+```java
+
+String message = "&7Hi!";
+
+String formatMessage = Formatter.format(message); //this change '&7' to gray color
+```
+
+<h3>Permission Util</h3>
+
+```java
+String[] permissions =  new String[]{"*", "player.*"};
+
+PermissionUtil permissionUtil = new PermissionUtil(player);
+
+boolean hasPerm = permissionUtil.hasPermission(permissions); //checks if the player has a permission
+```
+
+<h3>MongoDB</h3>
+
+*connect to database:*
+
+```java
+MongoDB mongo = MongoDB.builder()
+        .user("root")
+        .host("host")
+        .useSSL(false) //default: false
+        .port(27017) //default: 27017
+        .password("password")
+        .build();
+
+//start connection
+mongo.openConnection();
+
+//close connection
+mongo.closeConnection();
 ```
