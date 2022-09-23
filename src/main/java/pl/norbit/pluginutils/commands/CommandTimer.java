@@ -55,6 +55,17 @@ public class CommandTimer {
         return false;
     }
 
+    public static String getCmdCooldown(Player p, String label){
+        LinkedList<Command> commands = commandTimer.get(p.getUniqueId());
+
+        for (Command command : commands) {
+            if(command.getCommandName().equalsIgnoreCase(label)){
+                return String.valueOf(command.getTime());
+            }
+        }
+        return "0";
+    }
+
 
     public static BukkitTask startTimer(JavaPlugin javaPlugin){
         commandTimer = new HashMap<>();
@@ -70,9 +81,9 @@ public class CommandTimer {
                     if (updatedTime == 0) commands.remove(command);
                 }
 
-                if (commands.isEmpty()) {
-                    commandTimer.remove(player);
-                }
+//                if (commands.isEmpty()) {
+//                    commandTimer.remove(player);
+//                }
             });
 
         }, 0L, 20L);

@@ -7,6 +7,8 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitTask;
+import pl.norbit.pluginutils.chat.Formatter;
+import pl.norbit.pluginutils.permissions.PermissionUtil;
 import pl.norbit.pluginutils.register.PluginUtilsRegistry;
 
 @Builder
@@ -14,7 +16,6 @@ public class CommandUtil {
 
     public enum TimeUnits{
         SECONDS,
-        MILLISECONDS,
         MINUTES
     }
 
@@ -28,8 +29,8 @@ public class CommandUtil {
 
     private static JavaPlugin javaPlugin;
     private static BukkitTask timerTask;
-    protected static String PERM_MESSAGE = "You dont have permission!";
-    protected static String COOLDOWN_MESSAGE = "Cooldown!";
+    protected static String PERM_MESSAGE = "&cYou dont have permission!";
+    protected static String COOLDOWN_MESSAGE = "&cCooldown! {COOLDOWN}!";
     private String commandName;
     private CommandExecutor commandExecutor;
     private String[] permissions;
@@ -39,6 +40,10 @@ public class CommandUtil {
     private TimeUnits timeUnits = TimeUnits.SECONDS;
 
     public void register(){
+
+        if(timeUnits == TimeUnits.MINUTES){
+            delay = delay * 60;
+        }
 
         CommandUtil.javaPlugin = PluginUtilsRegistry.getRegisterJavaPlugin();
 
@@ -71,15 +76,21 @@ public class CommandUtil {
 
             Player p = (Player) sender;
 
-            PermissionUtil permissionUtil = new PermissionUtil(p);
+            if (permissions != null) {
 
-            if(!permissionUtil.hasPermission(permissions)) {
-                p.sendMessage(CommandUtil.PERM_MESSAGE);
-                return false;
+                PermissionUtil permissionUtil = new PermissionUtil(p);
+
+                if (!permissionUtil.hasPermission(permissions)) {
+                    p.sendMessage(Formatter.format(CommandUtil.PERM_MESSAGE));
+                    return false;
+                }
             }
 
             if(!cmdIsReady(p, label)){
-                p.sendMessage(CommandUtil.COOLDOWN_MESSAGE);
+                String message = CommandUtil.COOLDOWN_MESSAGE
+                        .replace("{COOLDOWN}", CommandTimer.getCmdCooldown(p, label));
+
+                p.sendMessage(Formatter.format(message));
                 return false;
             }
 

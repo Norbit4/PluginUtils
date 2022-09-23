@@ -1,4 +1,4 @@
-package pl.norbit.pluginutils.commands;
+package pl.norbit.pluginutils.permissions;
 
 import org.bukkit.entity.Player;
 
