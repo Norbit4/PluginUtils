@@ -77,5 +77,57 @@ plugins {
 
 *shadow>shadowJar*
 
+<h3>Start</h3>
 
+```java
+//register plugin
+@Override
+public void onEnable() {
+    PluginUtilsRegistry.register(this);       
+}
+```
 
+<h3>Commands builder</h3>
+
+```java
+
+String[] permissions = new String[] {"*", "example.*"};
+
+CommandUtil
+        .builder()
+        .commandName("ping") //<- /ping
+        .commandExecutor(new Cmd())
+        .delay(30)
+        .timeUnits(CommandUtil.TimeUnits.SECONDS)
+        .permissions(permissions)
+        .build()
+        .register();
+        
+public class Cmd implements CommandExecutor {
+    @Override
+    public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+        //this execute when player has permission && cooldown is down
+
+        Player p = (Player)sender;
+
+        p.sendMessage("pong");
+        return false;
+    }
+}
+```
+- *custom perm & cooldown message:*
+
+```java
+
+CommandUtil.setPermMessage("Perm!"); 
+CommandUtil.setCooldownMessage("Cooldown: {COOLDOWN}"); 
+```
+
+- *add command to plugin.yml:*
+
+```yml
+#plugin.yml
+
+commands:
+  ping:
+```
