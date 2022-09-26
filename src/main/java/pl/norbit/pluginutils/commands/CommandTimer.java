@@ -80,10 +80,6 @@ public class CommandTimer {
 
                     if (updatedTime == 0) commands.remove(command);
                 }
-
-//                if (commands.isEmpty()) {
-//                    commandTimer.remove(player);
-//                }
             });
 
         }, 0L, 20L);

@@ -11,13 +11,23 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Builder
-public class TaskBuilder {
+public class TaskUtil {
 
     static {
         bukkitTaskList = new ArrayList<>();
     }
 
     private static List<BukkitTask> bukkitTaskList;
+
+    public static void stopAllTasks(){
+
+        bukkitTaskList.forEach(bukkitTask1 -> {
+            if(bukkitTask1 != null){
+                bukkitTask1.cancel();
+            }
+        });
+        bukkitTaskList.clear();
+    }
 
     @Getter
     private BukkitTask bukkitTask;
@@ -36,13 +46,12 @@ public class TaskBuilder {
             delay = 0,
             period = 20;
 
-    public void start(){
+    public BukkitTask start(){
         if (javaPlugin == null) throw new Error("JavaPlugin is not registered!");
 
         int formatDelay = getFormat(delayUnit, delay);
         int formatPeriod = getFormat(periodUnit, period);
 
-        System.out.println(formatPeriod);
         BukkitScheduler scheduler = javaPlugin.getServer().getScheduler();
 
         if(taskType == TaskType.TIMER) {
@@ -63,6 +72,8 @@ public class TaskBuilder {
             }
         }
         bukkitTaskList.add(bukkitTask);
+
+        return bukkitTask;
     }
 
     public void stop(){

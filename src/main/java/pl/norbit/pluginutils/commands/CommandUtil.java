@@ -60,7 +60,6 @@ public class CommandUtil {
     }
 
     public static class Permission implements CommandExecutor{
-
         private final CommandExecutor defaultCommandExecutor;
         private final int delay;
         private final String[] permissions;
