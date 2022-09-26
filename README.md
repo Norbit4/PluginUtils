@@ -50,8 +50,6 @@ dependencies {
 
 <h3>Option 1:</h3>
 
-
-
 - add depend to plugin.yml
 
 ```yml
@@ -148,7 +146,7 @@ commands:
 *Later task:*
 
 ```java
-TaskBuilder
+TaskUtil
         .builder()
         .taskType(TaskType.LATER)
         .asynchronous(false)
@@ -164,7 +162,7 @@ TaskBuilder
 *Timer task:*
 
 ```java
-TaskBuilder
+TaskUtil
         .builder()
         .taskType(TaskType.TIMER)
         .asynchronous(false) //default: false
@@ -176,6 +174,12 @@ TaskBuilder
         })
         .build() 
         .start();
+```
+
+*Stop all tasks:*
+
+```java
+TaskUtil.stopAllTasks();
 ```
 
 <h3>Formatter</h3>
