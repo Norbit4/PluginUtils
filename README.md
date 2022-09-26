@@ -1,6 +1,13 @@
 # PluginUtils
 [![](https://jitpack.io/v/Norbit4/PluginUtils.svg)](https://jitpack.io/#Norbit4/PluginUtils)
 
+- [Implement](https://github.com/Norbit4/PluginUtils#add-lib-to-project)
+- [Start](https://github.com/Norbit4/PluginUtils#start)
+- [Command builder](https://github.com/Norbit4/PluginUtils#commands-builder)
+- [Task builder](https://github.com/Norbit4/PluginUtils#task-builder)
+- [Formatter](https://github.com/Norbit4/PluginUtils#formatter) 
+- [Json database](https://github.com/Norbit4/PluginUtils#localdatabase) 
+
 <h3>Add lib to project:</h3>
 
 *Gradle:*
@@ -150,8 +157,8 @@ TaskBuilder
         .runnable(() ->{
             System.out.println("This will start afte 10 seconds!");
         })
-        .build() //return task
-        .start(); //start task
+        .build()
+        .start(); //return task and start
 ```
 
 *Timer task:*
@@ -190,22 +197,52 @@ PermissionUtil permissionUtil = new PermissionUtil(player);
 boolean hasPerm = permissionUtil.hasPermission(permissions); //checks if the player has a permission
 ```
 
-<h3>MongoDB</h3>
+<h3>LocalDatabase</h3>
 
-*connect to database:*
+Simple json files database
+
+> ⚠️ This database is designed with a small number of records in mind, it is not recommended for use with a large number of records!
+
+**recommended uses:**
+
+- config
+- worlds config
+- arenas config
+
+*etc.*
+
+*How to use?*
 
 ```java
-MongoDB mongo = MongoDB.builder()
-        .user("root")
-        .host("host")
-        .useSSL(false) //default: false
-        .port(27017) //default: 27017
-        .password("password")
-        .build();
 
-//start connection
-mongo.openConnection();
+String directory = this.getDataFolder().getAbsolutePath() + "/database";
 
-//close connection
-mongo.closeConnection();
+LocalDatabase<TestObject> database = new LocalDatabase<>(directory, TestObject.class);
+
+try {
+    //filename must be unique
+    database.saveObject("filename", new TestObject());
+} catch (IOException e) {
+    throw new RuntimeException(e);
+}
+
+database.deleteObject("filename"); //delete file
+
+try {
+    List<TestObject> allObjects = database.getAllObjects(); //get all objects
+} catch (IOException e) {
+    throw new RuntimeException(e);
+}
+
+try {
+    TestObject test = database.getObject("filename"); //get file
+} catch (IOException e) {
+    throw new RuntimeException(e);
+}
+
+try {
+    database.clear(); //clear all files
+} catch (IOException e) {
+    throw new RuntimeException(e);
+}
 ```
