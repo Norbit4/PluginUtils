@@ -30,13 +30,9 @@ public class GuiItem {
 
         if(lore != null) {
             if (!lore.isEmpty()) {
-                for (String s : lore) {
-                    Formatter.format(s);
-                }
                 itemMeta.setLore(lore);
             }
         }
-        name = Formatter.format(name);
 
         itemMeta.setDisplayName(name);
         itemStack.setItemMeta(itemMeta);
