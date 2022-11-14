@@ -8,6 +8,7 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.event.inventory.InventoryOpenEvent;
 import org.bukkit.inventory.Inventory;
+import pl.norbit.pluginutils.register.PluginUtilsRegistry;
 
 public class GuiUtil implements Listener {
 
@@ -62,6 +63,7 @@ public class GuiUtil implements Listener {
 
     @Builder
     private static GuiUtil of(String tittle, int size , GuiEvent guiEvent, GuiItem... items) {
+
         GuiUtil guiUtil = new GuiUtil();
         Inventory inventory = Bukkit.createInventory(null, size, tittle);
         guiUtil.events = guiEvent;
@@ -78,6 +80,12 @@ public class GuiUtil implements Listener {
         }
 
         guiUtil.inventory = inventory;
+
+        PluginUtilsRegistry
+                .getRegisterJavaPlugin()
+                .getServer()
+                .getPluginManager()
+                .registerEvents(guiUtil, PluginUtilsRegistry.getRegisterJavaPlugin());
 
         return guiUtil;
     }
