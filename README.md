@@ -5,7 +5,7 @@
 - [Start](https://github.com/Norbit4/PluginUtils#start)
 - [Command builder](https://github.com/Norbit4/PluginUtils#commands-builder)
 - [Task builder](https://github.com/Norbit4/PluginUtils#task-builder)
-- [Formatter](https://github.com/Norbit4/PluginUtils#formatter) 
+- [ChatUtil](https://github.com/Norbit4/PluginUtils#fchatutil) 
 - [Json database](https://github.com/Norbit4/PluginUtils#localdatabase) 
 
 <h3>Add lib to project:</h3>
@@ -182,13 +182,13 @@ TaskUtil
 TaskUtil.stopAllTasks();
 ```
 
-<h3>Formatter</h3>
+<h3>ChatUtil</h3>
 
 ```java
 
 String message = "&7Hi!";
 
-String formatMessage = Formatter.format(message); //this change '&7' to gray color
+String formatMessage = ChatUtil.format(message); //this change '&7' to gray color
 ```
 
 <h3>Permission Util</h3>
