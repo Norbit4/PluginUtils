@@ -7,7 +7,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitTask;
-import pl.norbit.pluginutils.chat.Formatter;
+import pl.norbit.pluginutils.chat.ChatUtil;
 import pl.norbit.pluginutils.permissions.PermissionUtil;
 import pl.norbit.pluginutils.register.PluginUtilsRegistry;
 
@@ -80,7 +80,7 @@ public class CommandUtil {
                 PermissionUtil permissionUtil = new PermissionUtil(p);
 
                 if (!permissionUtil.hasPermission(permissions)) {
-                    p.sendMessage(Formatter.format(CommandUtil.PERM_MESSAGE));
+                    p.sendMessage(ChatUtil.format(CommandUtil.PERM_MESSAGE));
                     return false;
                 }
             }
@@ -89,7 +89,7 @@ public class CommandUtil {
                 String message = CommandUtil.COOLDOWN_MESSAGE
                         .replace("{COOLDOWN}", CommandTimer.getCmdCooldown(p, label));
 
-                p.sendMessage(Formatter.format(message));
+                p.sendMessage(ChatUtil.format(message));
                 return false;
             }
 
