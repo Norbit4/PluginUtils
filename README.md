@@ -5,7 +5,7 @@
 - [Start](https://github.com/Norbit4/PluginUtils#start)
 - [Command builder](https://github.com/Norbit4/PluginUtils#commands-builder)
 - [Task builder](https://github.com/Norbit4/PluginUtils#task-builder)
-- [ChatUtil](https://github.com/Norbit4/PluginUtils#fchatutil) 
+- [Chat Util](https://github.com/Norbit4/PluginUtils#chatutil) 
 - [Json database](https://github.com/Norbit4/PluginUtils#localdatabase) 
 
 <h3>Add lib to project:</h3>
