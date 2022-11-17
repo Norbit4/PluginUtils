@@ -1,4 +1,8 @@
-# PluginUtils
+
+<a href="https://github.com/Norbit4/PluginUtils" target="_blank" rel="noreferrer"> <img src="https://user-images.githubusercontent.com/46154743/202323742-e932de83-876f-48ea-8a0b-1a3df4d91b22.png" alt="java" width="500" /> 
+
+#
+
 [![](https://jitpack.io/v/Norbit4/PluginUtils.svg)](https://jitpack.io/#Norbit4/PluginUtils)
 
 - [Implement](https://github.com/Norbit4/PluginUtils#add-lib-to-project)
@@ -11,6 +15,7 @@
 <h3>Add lib to project:</h3>
 
 *Gradle:*
+
 
 ```gradle
 repositories {
