@@ -5,6 +5,17 @@
 
 [![](https://jitpack.io/v/Norbit4/PluginUtils.svg)](https://jitpack.io/#Norbit4/PluginUtils)
 
+Support:
+- Spigot/PaperSpigot
+- ver: 1.8 - 1.19+
+
+
+The lib is in **BETA** version! Please report all errors!
+
+>If you have any suggestions/questions/bugs please contact: **BORBI#2685**
+
+#
+
 - [Implement](https://github.com/Norbit4/PluginUtils#add-lib-to-project)
 - [Start](https://github.com/Norbit4/PluginUtils#start)
 - [Command builder](https://github.com/Norbit4/PluginUtils#commands-builder)
