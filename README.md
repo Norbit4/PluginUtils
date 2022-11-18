@@ -5,6 +5,8 @@
 
 [![](https://jitpack.io/v/Norbit4/PluginUtils.svg)](https://jitpack.io/#Norbit4/PluginUtils)
 
+⛭ [Spigot](https://www.spigotmc.org/resources/lib-pluginutils-create-plugins-even-easier.106298/ "Click")
+
 Support:
 - Spigot/PaperSpigot
 - ver: 1.8 - 1.19+
@@ -13,6 +15,7 @@ Support:
 The lib is in **BETA** version! Please report all errors!
 
 >If you have any suggestions/questions/bugs please contact: **BORBI#2685**
+
 
 #
 
