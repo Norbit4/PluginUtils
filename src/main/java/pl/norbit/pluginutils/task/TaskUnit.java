@@ -1,5 +1,5 @@
 package pl.norbit.pluginutils.task;
 
 public enum TaskUnit {
-    SECONDS, MINUTES, MILLISECONDS
+    SECONDS, MINUTES, TICKS
 }

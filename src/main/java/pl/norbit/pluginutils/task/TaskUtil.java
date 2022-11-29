@@ -39,7 +39,7 @@ public class TaskUtil {
     @Builder.Default
     private TaskType taskType = TaskType.TIMER;
     @Builder.Default
-    private TaskUnit periodUnit = TaskUnit.MILLISECONDS, delayUnit = TaskUnit.MILLISECONDS;
+    private TaskUnit periodUnit = TaskUnit.TICKS, delayUnit = TaskUnit.TICKS;
 
     @Builder.Default
     private int
